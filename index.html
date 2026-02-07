@@ -3,28 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nazduru | Web Portfolyo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Nazduru | Dijital Kimlik & Portfolyo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* GENEL AYARLAR */
         :root {
-            --bg-color: #f8f9fa;       /* Kırık beyaz arka plan */
+            --bg-color: #f0f2f5;       /* Hafif gri arka plan */
             --card-bg: #ffffff;        /* Bembeyaz kartlar */
-            --text-main: #2d3436;      /* Koyu gri ana yazı */
-            --text-light: #636e72;     /* Açık gri detay yazıları */
-            --accent: #6c5ce7;         /* Modern mor/mavi vurgu rengi */
-            --accent-hover: #a29bfe;   /* Vurgu renginin açığı */
-            --shadow: 0 10px 30px rgba(0,0,0,0.08); /* Yumuşak gölge */
+            --text-main: #212529;      /* Koyu gri ana yazı */
+            --text-light: #495057;     /* Orta gri detay yazıları */
+            --accent: #007bff;         /* Canlı mavi vurgu rengi */
+            --accent-hover: #0056b3;   /* Vurgu renginin koyusu */
+            --shadow-light: 0 4px 15px rgba(0,0,0,0.05); /* Yumuşak ve hafif gölge */
+            --shadow-strong: 0 10px 30px rgba(0,0,0,0.1); /* Daha belirgin gölge */
+            --border-radius-main: 12px;
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif; /* Daha okunaklı ana font */
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.7;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* SAĞ ÜST KÖŞE VERSİYON ETİKETİ */
@@ -34,148 +39,213 @@
             right: 25px;
             background: var(--card-bg);
             color: var(--accent);
-            padding: 8px 20px;
-            border-radius: 50px;
+            padding: 8px 18px;
+            border-radius: 25px;
             font-size: 0.8rem;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+            font-weight: 500;
+            box-shadow: var(--shadow-light);
             z-index: 1000;
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
 
         .version-badge::before {
             content: '';
             display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: #00b894; /* Canlı yeşil nokta (aktiflik hissi) */
+            width: 7px;
+            height: 7px;
+            background-color: #28a745; /* Canlı yeşil nokta (aktiflik hissi) */
             border-radius: 50%;
+            animation: pulse 1.5s infinite;
         }
 
         .version-badge:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-strong);
         }
 
         /* ANA KAPLAYICI */
         .container {
-            max-width: 700px;
-            margin: 60px auto;
-            padding: 0 20px;
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 25px;
         }
 
         /* PROFİL BÖLÜMÜ (HEADER) */
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             animation: fadeIn 1s ease-out;
         }
 
-        .profile-circle {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+        .profile-img {
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
-            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            padding: 3px;
+            box-shadow: var(--shadow-strong);
+            margin: 0 auto 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Eğer fotoğrafın yoksa profil dairesi */
+        .profile-placeholder {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, var(--accent), #6a9ce0);
+            border-radius: 50%;
+            margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 3rem;
-            font-weight: 600;
-            box-shadow: var(--shadow);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-strong);
+            border: 4px solid #fff;
+            transition: transform 0.3s ease;
+        }
+        .profile-placeholder:hover {
+            transform: scale(1.05);
         }
         
-        /* Eğer fotoğrafın varsa yukarıdaki .profile-circle yerine img etiketi kullanabilirsin */
-
         h1 {
-            font-size: 2.5rem;
+            font-family: 'Space Grotesk', sans-serif; /* Başlıklar için daha dinamik font */
+            font-size: 2.8rem;
             margin: 0;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
             color: var(--text-main);
         }
 
         .tagline {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-light);
-            margin-top: 10px;
-            font-weight: 300;
+            margin-top: 12px;
+            font-weight: 400;
+            line-height: 1.5;
         }
 
         /* İÇERİK KARTLARI */
         .content-section {
             background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
+            padding: 35px 40px;
+            border-radius: var(--border-radius-main);
+            box-shadow: var(--shadow-light);
             margin-bottom: 30px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             animation: slideUp 0.8s ease-out backwards;
+            border-left: 5px solid var(--accent); /* Sol tarafta ince bir vurgu çizgisi */
         }
 
         .content-section:hover {
-            transform: translateY(-5px);
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-strong);
         }
 
         .content-section:nth-child(2) { animation-delay: 0.2s; }
         .content-section:nth-child(3) { animation-delay: 0.4s; }
+        .content-section:nth-child(4) { animation-delay: 0.6s; }
 
         h2 {
-            font-size: 1.4rem;
-            color: var(--accent);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            color: var(--text-main);
             margin-top: 0;
             margin-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+            padding-bottom: 10px;
             display: flex;
             align-items: center;
+            gap: 10px;
+        }
+        h2 svg {
+            color: var(--accent);
+            font-size: 1.8rem;
         }
 
         p {
             color: var(--text-light);
-            margin-bottom: 0;
+            margin-bottom: 15px;
         }
 
-        /* LİSTE TASARIMI */
-        ul.skills {
+        /* LİSTE TASARIMI (Beceriler/İlgi Alanları) */
+        ul.chip-list {
             list-style: none;
             padding: 0;
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            margin-top: 20px;
         }
 
-        ul.skills li {
-            background: #eff0f6;
-            padding: 8px 16px;
-            border-radius: 8px;
+        ul.chip-list li {
+            background: #e9ecef; /* Hafif gri chip arka planı */
+            padding: 8px 18px;
+            border-radius: 20px;
             font-size: 0.9rem;
             color: var(--text-main);
             font-weight: 500;
+            transition: background 0.2s ease;
         }
+        ul.chip-list li:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* SOSYAL MEDYA İKONLARI */
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-links a {
+            color: var(--text-light);
+            font-size: 2rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        /* İkonlar için Font Awesome kullanıyoruz */
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
+
 
         /* BUTONLAR */
         .btn-group {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 45px;
         }
 
         .btn {
             display: inline-block;
             background: var(--accent);
             color: white;
-            padding: 14px 30px;
+            padding: 15px 35px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
             transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
         }
 
         .btn:hover {
-            background: #5649c0;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 123, 255, 0.45);
         }
 
         /* ALT BİLGİ */
@@ -183,23 +253,57 @@
             text-align: center;
             margin-top: 60px;
             margin-bottom: 40px;
-            color: #b2bec3;
-            font-size: 0.85rem;
+            color: #adb5bd;
+            font-size: 0.9rem;
         }
 
         /* ANİMASYONLAR */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
 
+        /* RESPONSIVE AYARLAR */
+        @media (max-width: 768px) {
+            .container {
+                margin: 40px auto;
+                padding: 0 15px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .tagline {
+                font-size: 1rem;
+            }
+            .profile-img, .profile-placeholder {
+                width: 100px;
+                height: 100px;
+                font-size: 3rem;
+            }
+            .content-section {
+                padding: 25px 20px;
+            }
+            .version-badge {
+                top: 15px;
+                right: 15px;
+                padding: 6px 14px;
+                font-size: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <div class="version-badge">
         <span>Sürüm 1.0.0</span>
@@ -208,37 +312,55 @@
     <div class="container">
         
         <header>
-            <div class="profile-circle">N</div> 
+            <div class="profile-placeholder">N</div> 
+            
             <h1>Merhaba, Ben Nazduru.</h1>
-            <p class="tagline">Dijital dünyada iz bırakmak için tasarlıyor ve geliştiriyorum.</p>
+            <p class="tagline">
+                Teknolojiye meraklı, dijital dünyada öğrenen ve üreten biriyim. <br> 
+                Her satır kodda yeni bir başlangıç, her projede yeni bir hikaye...
+            </p>
         </header>
 
         <div class="content-section">
-            <h2>Hakkımda</h2>
+            <h2><i class="fas fa-user-circle"></i> Kimim Ben?</h2>
             <p>
-                GitHub sayfam, öğrenme yolculuğumun bir yansıması. Karmaşık problemleri basit ve estetik çözümlere dönüştürmeyi seviyorum. 
-                Her yeni proje, benim için yeni bir keşif demek. Burası benim gelişim günlüğüm.
+                Dijital evrende kendime bir yer açmaya çalışan, öğrenmeye ve keşfetmeye hevesli bir bireyim. 
+                Web teknolojileri, açık kaynak projeler ve sürekli gelişim beni heyecanlandırıyor. 
+                Burayı dijital kimliğim ve bir öğrenme alanı olarak görüyorum.
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Neler Yapıyorum?</h2>
-            <p style="margin-bottom: 15px;">Şu an odaklandığım ve gelişmekte olduğum alanlar:</p>
-            <ul class="skills">
+            <h2><i class="fas fa-cogs"></i> Neler Yapıyorum?</h2>
+            <p>Şu anki ilgi alanlarım ve üzerinde çalıştığım teknolojiler:</p>
+            <ul class="chip-list">
                 <li>Web Tasarımı</li>
-                <li>HTML & CSS</li>
-                <li>GitHub</li>
-                <li>Dijital İçerik</li>
-                <li>Proje Yönetimi</li>
+                <li>HTML5 & CSS3</li>
+                <li>GitHub & Sürüm Kontrolü</li>
+                <li>UX/UI Prensipleri</li>
+                <li>Statik Site Geliştirme</li>
+                <li>Öğrenme & Araştırma</li>
             </ul>
         </div>
 
+        <div class="content-section">
+            <h2><i class="fas fa-lightbulb"></i> Gelecek Hedeflerim</h2>
+            <p>
+                Yaratıcı ve işlevsel web deneyimleri tasarlamak, front-end geliştirme becerilerimi derinleştirmek ve 
+                daha büyük projelere imza atmak istiyorum. Ayrıca, topluluk projelerine katkıda bulunmayı hedefliyorum.
+            </p>
+        </div>
+
+        <div class="social-links">
+            <a href="https://github.com/nazduru044" target="_blank" aria-label="GitHub Profilim"><i class="fab fa-github"></i></a>
+            </div>
+
         <div class="btn-group">
-            <a href="https://github.com/nazduru044" class="btn">Projelerimi İncele</a>
+            <a href="https://github.com/nazduru044?tab=repositories" class="btn">Tüm Projelerimi İncele</a>
         </div>
 
         <footer>
-            <p>&copy; 2024 Nazduru. Gelişime açık, sürekli yenilenen bir sayfa.</p>
+            <p>&copy; 2024 Nazduru. Dijitalde öğrenen, keşfeden ve üreten bir zihin.</p>
         </footer>
 
     </div>
