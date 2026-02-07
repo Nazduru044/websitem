@@ -1,1 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nazduru | Kişisel Web Sitesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* GENEL AYARLAR */
+        :root {
+            --bg-color: #0f172a; /* Koyu lacivert/siyah arka plan */
+            --text-color: #e2e8f0; /* Açık gri yazı */
+            --accent-color: #38bdf8; /* Parlak mavi vurgular */
+            --card-bg: #1e293b; /* Kart arka planı */
+        }
 
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* SAĞ ÜST KÖŞE VERSİYON ETİKETİ */
+        .version-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--accent-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .version-badge:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            transform: scale(1.05);
+        }
+
+        /* ANA İÇERİK DÜZENİ */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 20px 50px;
+            text-align: center;
+        }
+
+        /* HERO BÖLÜMÜ (Giriş) */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        p.subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        /* KART TASARIMI (Hakkımda vs.) */
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            border-left: 4px solid var(--accent-color);
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        /* BUTON TASARIMI */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: var(--accent-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4);
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* ANİMASYONLAR */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="version-badge">v1.0.0</div>
+
+    <div class="container">
+        <h1>Merhaba, Ben Nazduru</h1>
+        <p class="subtitle">Teknoloji, Tasarım ve Gelecek Odaklı Bir Yolculuk</p>
+
+        <div class="card">
+            <h2>👋 Kimim Ben?</h2>
+            <p>
+                Dijital dünyayı keşfetmeye meraklı, GitHub üzerinde projeler geliştiren biriyim. 
+                Her satır kodda yeni bir şeyler öğreniyor, versiyon versiyon kendimi geliştiriyorum. 
+                Burası benim dijital not defterim ve portfolyom.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>🚀 Hedeflerim</h2>
+            <p>
+                Şu anda web teknolojileri üzerine yoğunlaşıyorum. Amacım kullanıcı dostu, 
+                estetik ve fonksiyonel projeler üretmek. 
+            </p>
+            <ul>
+                <li>Web Tasarımı & Geliştirme</li>
+                <li>Açık Kaynak Projeler</li>
+                <li>Sürekli Öğrenme</li>
+            </ul>
+        </div>
+
+        <a href="https://github.com/nazduru044" class="btn">GitHub Profilim</a>
+
+        <footer>
+            <p>&copy; 2024 Nazduru. Tüm hakları saklıdır. <br> Powered by GitHub Pages</p>
+        </footer>
+    </div>
+
+    <script>
+        console.log("Nazduru Web Sitesi Yüklendi - v1.0.0");
+        
+        // İstersen versiyonu dinamik olarak değiştirmek için burayı kullanabilirsin
+        // Şu an HTML içinden manuel değişiyor, bu en kolayıdır.
+    </script>
+</body>
+</html>
