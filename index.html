@@ -3,126 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nazduru | Kişisel Web Sitesi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Nazduru | Web Portfolyo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         /* GENEL AYARLAR */
         :root {
-            --bg-color: #0f172a; /* Koyu lacivert/siyah arka plan */
-            --text-color: #e2e8f0; /* Açık gri yazı */
-            --accent-color: #38bdf8; /* Parlak mavi vurgular */
-            --card-bg: #1e293b; /* Kart arka planı */
+            --bg-color: #f8f9fa;       /* Kırık beyaz arka plan */
+            --card-bg: #ffffff;        /* Bembeyaz kartlar */
+            --text-main: #2d3436;      /* Koyu gri ana yazı */
+            --text-light: #636e72;     /* Açık gri detay yazıları */
+            --accent: #6c5ce7;         /* Modern mor/mavi vurgu rengi */
+            --accent-hover: #a29bfe;   /* Vurgu renginin açığı */
+            --shadow: 0 10px 30px rgba(0,0,0,0.08); /* Yumuşak gölge */
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Outfit', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
+            color: var(--text-main);
+            line-height: 1.7;
         }
 
         /* SAĞ ÜST KÖŞE VERSİYON ETİKETİ */
         .version-badge {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid var(--accent-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            top: 25px;
+            right: 25px;
+            background: var(--card-bg);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
             font-weight: 600;
-            color: var(--accent-color);
-            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
             z-index: 1000;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .version-badge::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #00b894; /* Canlı yeşil nokta (aktiflik hissi) */
+            border-radius: 50%;
         }
 
         .version-badge:hover {
-            background: var(--accent-color);
-            color: var(--bg-color);
-            transform: scale(1.05);
+            transform: translateY(-3px);
         }
 
-        /* ANA İÇERİK DÜZENİ */
+        /* ANA KAPLAYICI */
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 100px 20px 50px;
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        /* PROFİL BÖLÜMÜ (HEADER) */
+        header {
             text-align: center;
+            margin-bottom: 50px;
+            animation: fadeIn 1s ease-out;
         }
 
-        /* HERO BÖLÜMÜ (Giriş) */
-        h1 {
+        .profile-circle {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             font-size: 3rem;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInDown 1s ease-out;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Eğer fotoğrafın varsa yukarıdaki .profile-circle yerine img etiketi kullanabilirsin */
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: -1px;
+            color: var(--text-main);
         }
 
-        p.subtitle {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            margin-bottom: 40px;
-            animation: fadeInUp 1s ease-out 0.3s backwards;
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-top: 10px;
+            font-weight: 300;
         }
 
-        /* KART TASARIMI (Hakkımda vs.) */
-        .card {
+        /* İÇERİK KARTLARI */
+        .content-section {
             background: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
             margin-bottom: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            text-align: left;
-            border-left: 4px solid var(--accent-color);
-            animation: fadeInUp 1s ease-out 0.6s backwards;
+            transition: transform 0.3s ease;
+            animation: slideUp 0.8s ease-out backwards;
         }
 
-        .card h2 {
+        .content-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .content-section:nth-child(2) { animation-delay: 0.2s; }
+        .content-section:nth-child(3) { animation-delay: 0.4s; }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--accent);
             margin-top: 0;
-            color: var(--accent-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
 
-        /* BUTON TASARIMI */
+        p {
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        /* LİSTE TASARIMI */
+        ul.skills {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        ul.skills li {
+            background: #eff0f6;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* BUTONLAR */
+        .btn-group {
+            text-align: center;
+            margin-top: 40px;
+        }
+
         .btn {
             display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: var(--accent-color);
-            color: var(--bg-color);
+            background: var(--accent);
+            color: white;
+            padding: 14px 30px;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 50px;
             font-weight: 600;
-            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+            transition: all 0.3s ease;
         }
 
         .btn:hover {
+            background: #5649c0;
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
         }
 
-        /* FOOTER */
+        /* ALT BİLGİ */
         footer {
-            margin-top: 50px;
-            font-size: 0.9rem;
-            color: #64748b;
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+            color: #b2bec3;
+            font-size: 0.85rem;
         }
 
         /* ANİMASYONLAR */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -130,46 +201,47 @@
 </head>
 <body>
 
-    <div class="version-badge">v1.0.0</div>
+    <div class="version-badge">
+        <span>Sürüm 1.0.0</span>
+    </div>
 
     <div class="container">
-        <h1>Merhaba, Ben Nazduru</h1>
-        <p class="subtitle">Teknoloji, Tasarım ve Gelecek Odaklı Bir Yolculuk</p>
+        
+        <header>
+            <div class="profile-circle">N</div> 
+            <h1>Merhaba, Ben Nazduru.</h1>
+            <p class="tagline">Dijital dünyada iz bırakmak için tasarlıyor ve geliştiriyorum.</p>
+        </header>
 
-        <div class="card">
-            <h2>👋 Kimim Ben?</h2>
+        <div class="content-section">
+            <h2>Hakkımda</h2>
             <p>
-                Dijital dünyayı keşfetmeye meraklı, GitHub üzerinde projeler geliştiren biriyim. 
-                Her satır kodda yeni bir şeyler öğreniyor, versiyon versiyon kendimi geliştiriyorum. 
-                Burası benim dijital not defterim ve portfolyom.
+                GitHub sayfam, öğrenme yolculuğumun bir yansıması. Karmaşık problemleri basit ve estetik çözümlere dönüştürmeyi seviyorum. 
+                Her yeni proje, benim için yeni bir keşif demek. Burası benim gelişim günlüğüm.
             </p>
         </div>
 
-        <div class="card">
-            <h2>🚀 Hedeflerim</h2>
-            <p>
-                Şu anda web teknolojileri üzerine yoğunlaşıyorum. Amacım kullanıcı dostu, 
-                estetik ve fonksiyonel projeler üretmek. 
-            </p>
-            <ul>
-                <li>Web Tasarımı & Geliştirme</li>
-                <li>Açık Kaynak Projeler</li>
-                <li>Sürekli Öğrenme</li>
+        <div class="content-section">
+            <h2>Neler Yapıyorum?</h2>
+            <p style="margin-bottom: 15px;">Şu an odaklandığım ve gelişmekte olduğum alanlar:</p>
+            <ul class="skills">
+                <li>Web Tasarımı</li>
+                <li>HTML & CSS</li>
+                <li>GitHub</li>
+                <li>Dijital İçerik</li>
+                <li>Proje Yönetimi</li>
             </ul>
         </div>
 
-        <a href="https://github.com/nazduru044" class="btn">GitHub Profilim</a>
+        <div class="btn-group">
+            <a href="https://github.com/nazduru044" class="btn">Projelerimi İncele</a>
+        </div>
 
         <footer>
-            <p>&copy; 2024 Nazduru. Tüm hakları saklıdır. <br> Powered by GitHub Pages</p>
+            <p>&copy; 2024 Nazduru. Gelişime açık, sürekli yenilenen bir sayfa.</p>
         </footer>
+
     </div>
 
-    <script>
-        console.log("Nazduru Web Sitesi Yüklendi - v1.0.0");
-        
-        // İstersen versiyonu dinamik olarak değiştirmek için burayı kullanabilirsin
-        // Şu an HTML içinden manuel değişiyor, bu en kolayıdır.
-    </script>
 </body>
 </html>
